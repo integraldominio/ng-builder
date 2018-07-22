@@ -1,0 +1,132 @@
+<div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title>Elementos</mat-card-title>
+      <mat-card-content>
+
+
+
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="rotulo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Rótulo</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.rotulo}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="inicial">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Valor Inicial</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.inicial}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="mascara">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Máscara Edição</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.mascara}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="pipe">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Máscara Display</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.pipe}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="dica">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Hint(dica)</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.dica}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="tamanho">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tamanho</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.tamanho}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="Decimais">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Deciamais</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.Decimais}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="tipoElemento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Elemento</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.tipoElemento}}</mat-cell>
+    </ng-container>
+    <!-- ID Column -->
+    <ng-container matColumnDef="tipoField">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Field</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{row.tipoField}}</mat-cell>
+    </ng-container>
+  
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="primary" (click)="startEdit(row)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button   (click)="deleteItem(row)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+      No results
+    </div>
+
+  <mat-paginator #paginator
+                 [length]="dataSource.length"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+
+
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
+
+
+
+<div fxLayout="row wrap" class="form-group">
+  <div fxFlex.gt-sm="100" class="divide">
+    <mat-card>
+      <mat-card-title>Adicionar</mat-card-title>
+      <mat-card-content>
+
+
+<form [formGroup]="form" >
+  <formly-form
+    [form]="form"
+    [options]="options"
+    [fields]="fields"
+    [model]="model">
+    <button mat-button (click)="onSubmit(model)" >Salvar</button>
+    <button mat-button (click)="options.resetModel()">Limpar</button>
+  </formly-form>
+</form>
+
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
