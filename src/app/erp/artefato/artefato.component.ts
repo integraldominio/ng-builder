@@ -16,9 +16,7 @@ export class ArtefatoComponent implements OnInit, AfterViewInit {
     'resourceName',
     'className',
     'classFolder',
-    'tmplateTs',
-    'templateHtml',
-    'templateCss',
+    'actions'
     ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
