@@ -20,11 +20,19 @@
     {"id":1,"nome":"cliente 001","endereco":"rua X","email":"email01@gmail.com","situcao":"Ativo","limiteSaldo":100000},
     {"id":2,"nome":"cliente 002","endereco":"rua Y","email":"email02@gmail.com","situcao":"Ativo","limiteSaldo":200000}
   ],
-  "produtos":[
-    {"id":1, "nome":"IPhone X", "preco":2000},
-    {"id":1, "nome":"Galaxy 9", "preco":1000}
+  "artefatos":[
+    {"id":1, "nome":"IPhone 1", "resourceName":"apple","className":"apple", "classFolder":"apple","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":2, "nome":"Galaxy 1", "resourceName":"samsumg","className":"apple", "classFolder":"samsumg","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":3, "nome":"IPhone 2", "resourceName":"apple","className":"apple", "classFolder":"apple","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":4, "nome":"Galaxy 3", "resourceName":"samsumg","className":"apple", "classFolder":"samsumg","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":5, "nome":"IPhone 4", "resourceName":"apple","className":"apple", "classFolder":"apple","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":6, "nome":"Galaxy 5", "resourceName":"samsumg","className":"apple", "classFolder":"samsumg","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":7, "nome":"IPhone 6", "resourceName":"apple","className":"apple", "classFolder":"apple","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":8, "nome":"Galaxy 7", "resourceName":"samsumg","className":"apple", "classFolder":"samsumg","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":9, "nome":"IPhone 8", "resourceName":"apple","className":"apple", "classFolder":"apple","templateTS":"","templateHtml":"","templateCss":""},
+    {"id":10, "nome":"Galaxy 9", "resourceName":"samsumg","className":"apple", "classFolder":"samsumg","templateTS":"","templateHtml":"","templateCss":""}
   ],
   "faturas":[
   ]
-
+ 
 }

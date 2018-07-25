@@ -5,6 +5,7 @@ import { SidenavService } from './sidenav.service';
 import { NavigationStart, ResolveStart, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
 import { AuthenticationService } from '../../infra/security';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,6 +13,7 @@ import { AuthenticationService } from '../../infra/security';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenaveComponent implements OnInit {
+
 
   private islogado = false;
 
@@ -27,13 +29,25 @@ export class SidenaveComponent implements OnInit {
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   ngOnInit(): void {
-
+    this.sidenavService.setSidenav(this.sidenav );
   }
 
   logout() {
     this.sidenav.toggle();
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggle() {
+    this.isHandset
+      .subscribe(
+        arg => {
+          console.log( arg );
+          if ( arg.matches ) {
+            this.sidenavService.toggle();
+          }
+        });
+    }
   }
 
 }

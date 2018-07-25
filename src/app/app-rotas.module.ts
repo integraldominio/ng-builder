@@ -14,6 +14,8 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
 import { AuthGuard } from './infra/security';
 import { BaseComponent } from './pages/base/base.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ArtefatoFormComponent } from './erp/artefato/artefato-form.component';
+import { TableComponent } from './erp/artefato/table.component';
 
 const routes: Routes =
 
@@ -31,7 +33,10 @@ const routes: Routes =
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'sobre', component: SobreComponent, canActivate: [AuthGuard]},
     { path: 'projeto',  component: ProjetoComponent, canActivate: [AuthGuard] },
+    { path: 'table',  component: TableComponent, canActivate: [AuthGuard] },
     { path: 'artefato',  component: ArtefatoComponent, canActivate: [AuthGuard] },
+    { path: 'artefato/edit/:id',  component: ArtefatoFormComponent, canActivate: [AuthGuard] },
+    { path: 'artefato/add',  component: ArtefatoFormComponent, canActivate: [AuthGuard] },
     { path: 'elemento',  component: ElementoComponent, canActivate: [AuthGuard] },
     { path: 'configuracao',  component: ConfiguracaoComponent, canActivate: [AuthGuard] },
     { path: 'buildapp',  component: BuildAppComponent, canActivate: [AuthGuard] },

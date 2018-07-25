@@ -22,9 +22,12 @@ import { SidenavService } from './pages/sidenav/sidenav.service';
 
 import { ProjetoComponent } from './erp/projeto/projeto.component';
 import { ArtefatoComponent } from './erp/artefato/artefato.component';
+import { ArtefatoFormComponent } from './erp/artefato/artefato-form.component';
 import { ElementoComponent } from './erp/elemento/elemento.component';
 import { ConfiguracaoComponent } from './erp/configuracao/configuracao.component';
 import { BuildAppComponent } from './erp/buildapp/buildapp.component';
+import { MaxCharPipe } from './infra/pipes/MaxCharPipe';
+import { TableComponent } from './erp/artefato/table.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +37,14 @@ import { BuildAppComponent } from './erp/buildapp/buildapp.component';
     ErroComponent,
     LoginComponent,
     HomeComponent,
-    
     ProjetoComponent,
     ArtefatoComponent,
+    ArtefatoFormComponent,
     ElementoComponent,
     ConfiguracaoComponent,
     BuildAppComponent,
-    
+    MaxCharPipe,
+    TableComponent,
     ],
   imports: [
     BrowserModule,

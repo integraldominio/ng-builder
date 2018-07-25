@@ -1,48 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,  ViewChild } from '@angular/core';
 import { ArtefatoService, Artefato } from './artefato.service';
 import { MessageService } from '../../infra/security';
-import { FormGroup} from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import {MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-artefato',
   templateUrl: './artefato.component.html',
   styleUrls: ['./artefato.component.css']
 })
-export class ArtefatoComponent implements OnInit {
+export class ArtefatoComponent implements OnInit, AfterViewInit {
 
-  // form
-  form = new FormGroup({});
-  options: FormlyFormOptions = {
-    formState: {
-      awesomeIsForced: false,
-    },
-  };
-  model = {};
-
-  // table
+  dataSource: MatTableDataSource<Artefato>;
   displayedColumns = [
-  'nome',
-  'resourceName',
-  'className',
-  'classFolder',
-  'tmplateTs',
-  'templateHtml',
-  'templateCss',
-  ];
-  
-  dataSource: Array<Artefato> = [];
+    'nome',
+    'resourceName',
+    'className',
+    'classFolder',
+    'tmplateTs',
+    'templateHtml',
+    'templateCss',
+    ];
 
-  fields: FormlyFieldConfig[] =
-  [
-   { key: 'nome', type: 'input', templateOptions: { type: 'text', label: 'Nome', placeholder: 'Informe Nome', required: true } },
-   { key: 'resourceName', type: 'input', templateOptions: { type: 'text', label: 'Resource Name', placeholder: 'Informe Resource Name', required: true } },
-   { key: 'className', type: 'input', templateOptions: { type: 'text', label: 'Class Name', placeholder: 'Informe Class Name', required: true } },
-   { key: 'classFolder', type: 'input', templateOptions: { type: 'text', label: 'Class Folder', placeholder: 'Informe Class Folder', required: true } },
-   { key: 'tmplateTs', type: 'input', templateOptions: { type: 'text', label: 'Template Ts', placeholder: 'Informe Template Ts', required: true } },
-   { key: 'templateHtml', type: 'input', templateOptions: { type: 'text', label: 'Template Html', placeholder: 'Informe Template Html', required: true } },
-   { key: 'templateCss', type: 'input', templateOptions: { type: 'text', label: 'Template Css', placeholder: 'Informe Template Css', required: true } },
-  ] ;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor (
     private artefatoService: ArtefatoService,
@@ -50,24 +30,26 @@ export class ArtefatoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.listAll();
   }
 
-  onSubmit(model) {
-    if (this.form.valid) {
-      this.artefatoService
-        .create( model as Artefato )
-        .subscribe(  _ => { console.log(model); this.listAll(); });
-    } else {
-      this.messageService.info('Informe corretamente dados obrigatórios.');
+  ngAfterViewInit() {
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
 
   listAll() {
     this.artefatoService.listAll().subscribe(
       data => {
-        this.dataSource  = data as Array<Artefato>;
-        console.log( this.dataSource );
+        this.dataSource = new MatTableDataSource<Artefato>(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     );
   }
@@ -82,4 +64,5 @@ export class ArtefatoComponent implements OnInit {
     this.artefatoService.delete(o.id)
     .subscribe( _ => this.listAll() );
   }
+
 }

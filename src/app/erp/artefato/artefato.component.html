@@ -1,17 +1,21 @@
+
 <div fxLayout="row wrap" class="form-group">
   <div fxFlex.gt-sm="100" class="divide">
     <mat-card>
       <mat-card-title>Artefatos</mat-card-title>
-      <mat-card-content>
 
+      <a mat-fab color="accent" routerLink="/create">
+        <mat-icon aria-label="add">add</mat-icon>
+      </a>
+    <mat-card-content>
+    <div class="table-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
 
+<mat-table #table [dataSource]="dataSource" matSort  class="mat-cell">
 
-<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- ID Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
       <mat-cell *matCellDef="let row" >{{row.nome}}</mat-cell>
@@ -19,7 +23,7 @@
     <!-- ID Column -->
     <ng-container matColumnDef="resourceName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Resource Name</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.resourceName}}</mat-cell>
+      <mat-cell *matCellDef="let row" >{{row.resourceName | maxChar: 10}}</mat-cell>
     </ng-container>
     <!-- ID Column -->
     <ng-container matColumnDef="className">
@@ -48,7 +52,7 @@
     </ng-container>
   
     <!-- actions -->
-    <ng-container matColumnDef="actions">
+<!--     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
         <button mat-icon-button color="primary" (click)="addNew()">
           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
@@ -64,54 +68,22 @@
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-
-
-  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
-      No results
-    </div>
-
-  <mat-paginator #paginator
-                 [length]="dataSource.length"
-                 [pageIndex]="0"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
-
-
-
+ 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  
+  <div class="row-buttons">
+    <a routerLink="/artefato/add" class="form-btn" mat-button>Add</a>
+    <a routerLink="/artefato/edit/1" class="form-btn" mat-button>Edit</a>
+  </div>
 
 </mat-card-content>
 </mat-card>
 </div>
 </div>
 
-
-
-<div fxLayout="row wrap" class="form-group">
-  <div fxFlex.gt-sm="100" class="divide">
-    <mat-card>
-      <mat-card-title>Adicionar</mat-card-title>
-      <mat-card-content>
-
-
-<form [formGroup]="form" >
-  <formly-form
-    [form]="form"
-    [options]="options"
-    [fields]="fields"
-    [model]="model">
-    <button mat-button (click)="onSubmit(model)" >Salvar</button>
-    <button mat-button (click)="options.resetModel()">Limpar</button>
-  </formly-form>
-</form>
-
-
-</mat-card-content>
-</mat-card>
-</div>
-</div>
+ 

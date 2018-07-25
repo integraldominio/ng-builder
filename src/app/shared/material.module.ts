@@ -38,8 +38,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
-
+  MatTreeModule
 
 } from '@angular/material';
 
