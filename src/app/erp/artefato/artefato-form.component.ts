@@ -71,4 +71,11 @@ export class ArtefatoFormComponent implements OnInit {
           this.messageService.info('Informe corretamente dados obrigatórios.');
         }
       }
+
+    loadArtefato(id: number)  {
+      this.artefatoService.read(id).subscribe(
+          data => {this.model  = data as Artefato;
+        }
+      );
+    }
 }
