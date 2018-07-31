@@ -2,7 +2,105 @@
 
 ## ngx-builder
 
-Construtor de aplicativos usando template engine FreeMaker.
+Construtor de aplicativos usando template engine FreeMaker, Spring Boot e Angular 6. 
+
+## Pré-requisitos
+
+* IDE Java Eclipse (Sugestão)
+* Visual Code (Sugestão)
+* NodeJS
+* MySql
+
+## Instalação
+
+### Passo 1
+
+Clone o repositório:
+```
+git clone https://github.com/integraldominio/ng-builder-api.git
+```
+### Passo 2
+
+Importe o projeto Maven com IDE Java.
+
+### Passo 3
+
+Crie o database ngxbuilder no MySql. Configure usuário e senha nos profiles 
+
+#### application-prod.properties:
+
+```
+spring.datasource.username=root
+spring.datasource.password=1234
+```
+
+#### mysql command line:
+
+```
+mysql -uroot -p1234
+create database ngxbuilder;
+```
+
+### Passo 4 
+
+Prepare o profile de produção (applicaiton-pro.properties) em run configurations. IDE Eclipse.
+
+### Passo 5
+
+Gere o frontend do ngbuilder, executando CreateFolderTeste.java
+
+### Passo 6 
+
+Abrir projeto Angular em output/frontend usando Visualcode (sugestão).
+Abrir terminal.
+execute:
+
+```
+npm i
+ng serve --o
+```
+
+Acesso: 
+```
+usuário: admin
+senha: admin
+```
+
+## Frontend Ngx-Builder
+
+Módulos:
+
+### Login
+
+![](docs/00.PNG)
+
+### Dashboard
+
+![](docs/01.PNG)
+
+### Portal:
+
+![](docs/02.PNG)
+
+### Projeto:
+
+![](docs/04.PNG)
+
+### Artefato:
+
+![](docs/06.PNG)
+
+### Elemento:
+
+![](docs/08.PNG)
+
+### Configurações:
+
+![](docs/10.PNG)
+
+### Gerar App:
+
+![](docs/11.PNG)
 
 ## Freemaker
 https://freemarker.apache.org/
