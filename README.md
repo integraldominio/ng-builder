@@ -1,6 +1,6 @@
-# NG-Builder v 1.0
+# NGX-Builder v 0.0.2
 
-## ngbuilder
+## ngx-builder
 
 Construtor de aplicativos usando template engine FreeMaker.
 
