@@ -48,7 +48,6 @@ export class SidenaveComponent implements OnInit {
           }
         });
     }
-  }
 
 }
 
